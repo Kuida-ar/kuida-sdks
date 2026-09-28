@@ -11,7 +11,7 @@ using System.Text.Json.Serialization;
 namespace Kuida
 {
     /// <summary>
-    /// Una URL de tu sistema a la que Kuida le avisa lo que pasa.
+    /// Una URL de su sistema a la que Kuida le avisa lo que pasa.
     /// </summary>
     public partial class WebhookEndpoint : KuidaObject, IHasId
     {

@@ -16,7 +16,7 @@ namespace Kuida
     public partial class PatientListParams : ListParams
     {
         /// <summary>
-        /// Filtra por teléfono (cualquier formato).
+        /// Filtre por teléfono (cualquier formato).
         /// </summary>
         public string? Phone { get; set; }
 

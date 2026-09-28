@@ -25,13 +25,13 @@ public final class WebhookEndpointCreateParams extends KuidaParams {
   public static final class Builder extends KuidaParams.AbstractBuilder<Builder, WebhookEndpointCreateParams> {
     Builder() {}
 
-    /** URL https de tu sistema. */
+    /** URL https de su sistema. */
     public Builder url(String url) {
       return set("url", url);
     }
 
     /**
-     * Qué eventos quieres recibir. <code>*</code> = todos.
+     * Qué eventos quiere recibir. <code>*</code> = todos.
      *
      * <p>Valores posibles: <code>intake.requested</code>, <code>patient.upserted</code>, <code>appointment.created</code>, <code>appointment.rescheduled</code>, <code>appointment.cancelled</code>, <code>visit.completed</code>, <code>treatment.prescribed</code>, <code>order.issued</code>, <code>intake.created</code>, <code>intake.ready</code>, <code>conversation.handoff</code>, <code>patient.silent</code>, <code>webhook.ping</code>, <code>*</code>.
      */
@@ -45,7 +45,7 @@ public final class WebhookEndpointCreateParams extends KuidaParams {
     }
 
     /**
-     * Qué eventos quieres recibir. <code>*</code> = todos.
+     * Qué eventos quiere recibir. <code>*</code> = todos.
      *
      * <p>Valores posibles: <code>intake.requested</code>, <code>patient.upserted</code>, <code>appointment.created</code>, <code>appointment.rescheduled</code>, <code>appointment.cancelled</code>, <code>visit.completed</code>, <code>treatment.prescribed</code>, <code>order.issued</code>, <code>intake.created</code>, <code>intake.ready</code>, <code>conversation.handoff</code>, <code>patient.silent</code>, <code>webhook.ping</code>, <code>*</code>.
      */

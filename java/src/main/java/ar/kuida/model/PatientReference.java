@@ -4,7 +4,7 @@ package ar.kuida.model;
 import ar.kuida.JsonEncodable;
 
 /**
- * Un paciente: su id de Kuida (<code>pat_…</code>) o los datos con que lo conoce tu sistema.
+ * Un paciente: su id de Kuida (<code>pat_…</code>) o los datos con que lo conoce su sistema.
  *
  * <p>Se arma con {@link #id(String)} (<code>pat_…</code>) o con {@link #identity(PatientIdentity)}.
  */

@@ -11,12 +11,12 @@ using System.Text.Json.Serialization;
 namespace Kuida
 {
     /// <summary>
-    /// Cómo conoce tu sistema al profesional.
+    /// Cómo conoce su sistema al profesional.
     /// </summary>
     public partial class DoctorIdentity
     {
         /// <summary>
-        /// Id del profesional en tu sistema.
+        /// Id del profesional en su sistema.
         /// </summary>
         [JsonPropertyName("externalId")]
         public string? ExternalId { get; set; }

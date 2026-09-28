@@ -79,13 +79,13 @@ public class Event extends KuidaObject {
     return source;
   }
 
-  /** Identidad del evento en su fuente. Para la API, el <code>id</code> que enviaste. */
+  /** Identidad del evento en su fuente. Para la API, el <code>id</code> que envió. */
   public String getSourceRef() {
     return sourceRef;
   }
 
   /**
-   * <code>processed</code> Kuida hizo lo suyo · <code>unhandled</code> guardado, sin efecto todavía · <code>failed</code> falló, reintenta con el mismo id · <code>duplicate</code> · <code>received</code> en curso.
+   * <code>processed</code> Kuida hizo lo suyo · <code>unhandled</code> guardado, sin efecto todavía · <code>failed</code> falló, reintente con el mismo id · <code>duplicate</code> · <code>received</code> en curso.
    *
    * <p>Valores posibles: <code>received</code>, <code>processed</code>, <code>failed</code>, <code>duplicate</code>, <code>unhandled</code>.
    */

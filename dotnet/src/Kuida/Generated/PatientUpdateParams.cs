@@ -11,7 +11,7 @@ using System.Text.Json.Serialization;
 namespace Kuida
 {
     /// <summary>
-    /// Solo cambia lo que envías. El teléfono no se cambia: es la identidad.
+    /// Solo cambia lo que envía. El teléfono no se cambia: es la identidad.
     /// </summary>
     public partial class PatientUpdateParams
     {

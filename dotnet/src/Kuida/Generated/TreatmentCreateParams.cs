@@ -16,7 +16,7 @@ namespace Kuida
     public partial class TreatmentCreateParams
     {
         /// <summary>
-        /// Un paciente: su id de Kuida (<c>pat_…</c>) o los datos con que lo conoce tu sistema.
+        /// Un paciente: su id de Kuida (<c>pat_…</c>) o los datos con que lo conoce su sistema.
         /// Obligatorio.
         /// </summary>
         [JsonPropertyName("patient")]

@@ -4,7 +4,7 @@ package ar.kuida.model;
 import ar.kuida.KuidaParams;
 import java.util.Map;
 
-/** Cómo conoce tu sistema al profesional. */
+/** Cómo conoce su sistema al profesional. */
 public final class DoctorIdentity extends KuidaParams {
   private DoctorIdentity(Map<String, Object> values) {
     super(values);
@@ -19,7 +19,7 @@ public final class DoctorIdentity extends KuidaParams {
   public static final class Builder extends KuidaParams.AbstractBuilder<Builder, DoctorIdentity> {
     Builder() {}
 
-    /** Id del profesional en tu sistema. */
+    /** Id del profesional en su sistema. */
     public Builder externalId(String externalId) {
       return set("externalId", externalId);
     }

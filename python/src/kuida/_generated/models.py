@@ -74,7 +74,7 @@ class Patient(KuidaObject):
     phone: Optional[str]
     email: Optional[str]
     dni: Optional[str]
-    #: Id del paciente en tu sistema.
+    #: Id del paciente en su sistema.
     external_id: Optional[str]
     #: Fecha de nacimiento (AAAA-MM-DD).
     date_of_birth: Optional[str]
@@ -105,7 +105,7 @@ class Patient(KuidaObject):
 
 @register_model
 class PatientList(ListObject[Patient]):
-    """Página de resultados. Sigue con `startingAfter` = id del último."""
+    """Página de resultados. Siga con `startingAfter` = id del último."""
 
     OBJECT_NAME = 'list'
 
@@ -156,7 +156,7 @@ class Doctor(KuidaObject):
 
 @register_model
 class DoctorList(ListObject[Doctor]):
-    """Página de resultados. Sigue con `startingAfter` = id del último."""
+    """Página de resultados. Siga con `startingAfter` = id del último."""
 
     OBJECT_NAME = 'list'
 
@@ -191,9 +191,9 @@ class Appointment(KuidaObject):
     status: str
     #: Tipo de turno o práctica.
     type: Optional[str]
-    #: Id del turno en tu sistema.
+    #: Id del turno en su sistema.
     external_id: Optional[str]
-    #: Por dónde entró: tu API, el conector del sistema de gestión, el agente de Kuida o el equipo.
+    #: Por dónde entró: su API, el conector del sistema de gestión, el agente de Kuida o el equipo.
     source: str
     cancelled_at: Optional[datetime]
     #: Fecha y hora ISO 8601.
@@ -219,7 +219,7 @@ class Appointment(KuidaObject):
 
 @register_model
 class AppointmentList(ListObject[Appointment]):
-    """Página de resultados. Sigue con `startingAfter` = id del último."""
+    """Página de resultados. Siga con `startingAfter` = id del último."""
 
     OBJECT_NAME = 'list'
 
@@ -278,7 +278,7 @@ class Visit(KuidaObject):
 
 @register_model
 class VisitList(ListObject[Visit]):
-    """Página de resultados. Sigue con `startingAfter` = id del último."""
+    """Página de resultados. Siga con `startingAfter` = id del último."""
 
     OBJECT_NAME = 'list'
 
@@ -341,7 +341,7 @@ class IntakeRequest(KuidaObject):
 
 @register_model
 class IntakeRequestList(ListObject[IntakeRequest]):
-    """Página de resultados. Sigue con `startingAfter` = id del último."""
+    """Página de resultados. Siga con `startingAfter` = id del último."""
 
     OBJECT_NAME = 'list'
 
@@ -402,7 +402,7 @@ class Treatment(KuidaObject):
 
 @register_model
 class TreatmentList(ListObject[Treatment]):
-    """Página de resultados. Sigue con `startingAfter` = id del último."""
+    """Página de resultados. Siga con `startingAfter` = id del último."""
 
     OBJECT_NAME = 'list'
 
@@ -437,7 +437,7 @@ class ResultReference(KuidaObject):
 class EventResult(KuidaObject):
     """EventResult"""
 
-    #: El id que enviaste.
+    #: El id que envió.
     id: str
     accepted: bool
     status: str
@@ -483,9 +483,9 @@ class Event(KuidaObject):
     type: str
     #: Por dónde entró.
     source: str
-    #: Identidad del evento en su fuente. Para la API, el `id` que enviaste.
+    #: Identidad del evento en su fuente. Para la API, el `id` que envió.
     source_ref: str
-    #: `processed` Kuida hizo lo suyo · `unhandled` guardado, sin efecto todavía · `failed` falló, reintenta con el mismo id · `duplicate` · `received` en curso.
+    #: `processed` Kuida hizo lo suyo · `unhandled` guardado, sin efecto todavía · `failed` falló, reintente con el mismo id · `duplicate` · `received` en curso.
     status: str
     error: Optional[str]
     #: Lo que produjo el evento (`{ object: "visit", id: "vis_…" }`).
@@ -515,7 +515,7 @@ class Event(KuidaObject):
 
 @register_model
 class EventList(ListObject[Event]):
-    """Página de resultados. Sigue con `startingAfter` = id del último."""
+    """Página de resultados. Siga con `startingAfter` = id del último."""
 
     OBJECT_NAME = 'list'
 
@@ -549,7 +549,7 @@ class WebhookEndpointLastError(KuidaObject):
 
 @register_model
 class WebhookEndpoint(KuidaObject):
-    """Una URL de tu sistema a la que Kuida le avisa lo que pasa."""
+    """Una URL de su sistema a la que Kuida le avisa lo que pasa."""
 
     OBJECT_NAME = 'webhook_endpoint'
 
@@ -584,7 +584,7 @@ class WebhookEndpoint(KuidaObject):
 
 @register_model
 class WebhookEndpointList(ListObject[WebhookEndpoint]):
-    """Página de resultados. Sigue con `startingAfter` = id del último."""
+    """Página de resultados. Siga con `startingAfter` = id del último."""
 
     OBJECT_NAME = 'list'
 
@@ -629,7 +629,7 @@ class WebhookDelivery(KuidaObject):
     #: Endpoint destino.
     webhook_endpoint: str
     event_type: str
-    #: `pending` en curso o esperando reintento · `succeeded` tu endpoint respondió 2xx · `failed` se agotaron los reintentos.
+    #: `pending` en curso o esperando reintento · `succeeded` su endpoint respondió 2xx · `failed` se agotaron los reintentos.
     status: str
     attempts: int
     last_status_code: Optional[int]
@@ -659,7 +659,7 @@ class WebhookDelivery(KuidaObject):
 
 @register_model
 class WebhookDeliveryList(ListObject[WebhookDelivery]):
-    """Página de resultados. Sigue con `startingAfter` = id del último."""
+    """Página de resultados. Siga con `startingAfter` = id del último."""
 
     OBJECT_NAME = 'list'
 
@@ -679,11 +679,11 @@ class WebhookDeliveryList(ListObject[WebhookDelivery]):
 
 @register_model
 class WebhookEvent(KuidaObject):
-    """Lo que Kuida le manda a tu endpoint."""
+    """Lo que Kuida le manda a su endpoint."""
 
     OBJECT_NAME = 'event'
 
-    #: Id de la entrega (`whd_…`). Estable entre reintentos: deduplica por este campo.
+    #: Id de la entrega (`whd_…`). Estable entre reintentos: deduplique por este campo.
     id: str
     object: str
     type: str

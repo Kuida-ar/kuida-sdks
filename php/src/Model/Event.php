@@ -11,8 +11,8 @@ namespace Kuida\Model;
  * @property-read string $object
  * @property-read string $type Valores: `intake.requested`, `patient.upserted`, `appointment.created`, `appointment.rescheduled`, `appointment.cancelled`, `visit.completed`, `treatment.prescribed`, `order.issued`.
  * @property-read string $source Por dónde entró. Valores: `api`, `pms`, `email`, `tool`, `manual`, `import`.
- * @property-read string $sourceRef Identidad del evento en su fuente. Para la API, el `id` que enviaste.
- * @property-read string $status `processed` Kuida hizo lo suyo · `unhandled` guardado, sin efecto todavía · `failed` falló, reintenta con el mismo id · `duplicate` · `received` en curso. Valores: `received`, `processed`, `failed`, `duplicate`, `unhandled`.
+ * @property-read string $sourceRef Identidad del evento en su fuente. Para la API, el `id` que envió.
+ * @property-read string $status `processed` Kuida hizo lo suyo · `unhandled` guardado, sin efecto todavía · `failed` falló, reintente con el mismo id · `duplicate` · `received` en curso. Valores: `received`, `processed`, `failed`, `duplicate`, `unhandled`.
  * @property-read string|null $error
  * @property-read \Kuida\KuidaObject|null $result Lo que produjo el evento (`{ object: "visit", id: "vis_…" }`).
  * @property-read \Kuida\KuidaObject $data

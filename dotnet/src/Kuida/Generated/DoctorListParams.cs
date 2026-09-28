@@ -16,7 +16,7 @@ namespace Kuida
     public partial class DoctorListParams : ListParams
     {
         /// <summary>
-        /// Filtra por activos o inactivos.
+        /// Filtre por activos o inactivos.
         /// </summary>
         public bool? Active { get; set; }
 

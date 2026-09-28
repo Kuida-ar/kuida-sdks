@@ -5,9 +5,9 @@
 namespace Kuida\Model;
 
 /**
- * Lo que Kuida le manda a tu endpoint.
+ * Lo que Kuida le manda a su endpoint.
  *
- * @property-read string $id Id de la entrega (`whd_…`). Estable entre reintentos: deduplica por este campo.
+ * @property-read string $id Id de la entrega (`whd_…`). Estable entre reintentos: deduplique por este campo.
  * @property-read string $object
  * @property-read string $type Valores: `intake.requested`, `patient.upserted`, `appointment.created`, `appointment.rescheduled`, `appointment.cancelled`, `visit.completed`, `treatment.prescribed`, `order.issued`, `intake.created`, `intake.ready`, `conversation.handoff`, `patient.silent`, `webhook.ping`.
  * @property-read string $apiVersion

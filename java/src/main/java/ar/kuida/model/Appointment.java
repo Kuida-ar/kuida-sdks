@@ -98,7 +98,7 @@ public class Appointment extends KuidaObject {
   }
 
   /**
-   * Id del turno en tu sistema.
+   * Id del turno en su sistema.
    *
    * <p>Puede ser <code>null</code>.
    */
@@ -107,7 +107,7 @@ public class Appointment extends KuidaObject {
   }
 
   /**
-   * Por dónde entró: tu API, el conector del sistema de gestión, el agente de Kuida o el equipo.
+   * Por dónde entró: su API, el conector del sistema de gestión, el agente de Kuida o el equipo.
    *
    * <p>Valores posibles: <code>api</code>, <code>pms</code>, <code>agent</code>, <code>manual</code>.
    */

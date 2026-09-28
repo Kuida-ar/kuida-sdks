@@ -16,7 +16,7 @@ namespace Kuida
     public partial class VisitCreateParams
     {
         /// <summary>
-        /// Un paciente: su id de Kuida (<c>pat_…</c>) o los datos con que lo conoce tu sistema.
+        /// Un paciente: su id de Kuida (<c>pat_…</c>) o los datos con que lo conoce su sistema.
         /// Obligatorio.
         /// </summary>
         [JsonPropertyName("patient")]
@@ -42,7 +42,7 @@ namespace Kuida
         public string? Type { get; set; }
 
         /// <summary>
-        /// Id de la consulta en tu sistema. Si ya existe, se devuelve esa y no se crea otra.
+        /// Id de la consulta en su sistema. Si ya existe, se devuelve esa y no se crea otra.
         /// </summary>
         [JsonPropertyName("externalId")]
         public string? ExternalId { get; set; }

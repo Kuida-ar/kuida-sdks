@@ -34,7 +34,7 @@ public final class PatientListParams extends KuidaParams {
       return set("endingBefore", endingBefore);
     }
 
-    /** Filtra por teléfono (cualquier formato). */
+    /** Filtre por teléfono (cualquier formato). */
     public Builder phone(String phone) {
       return set("phone", phone);
     }

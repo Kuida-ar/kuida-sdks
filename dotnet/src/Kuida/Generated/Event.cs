@@ -43,13 +43,13 @@ namespace Kuida
         public string Source { get; set; } = null!;
 
         /// <summary>
-        /// Identidad del evento en su fuente. Para la API, el <c>id</c> que enviaste.
+        /// Identidad del evento en su fuente. Para la API, el <c>id</c> que envió.
         /// </summary>
         [JsonPropertyName("sourceRef")]
         public string SourceRef { get; set; } = null!;
 
         /// <summary>
-        /// <c>processed</c> Kuida hizo lo suyo · <c>unhandled</c> guardado, sin efecto todavía · <c>failed</c> falló, reintenta con el mismo id · <c>duplicate</c> · <c>received</c> en curso.
+        /// <c>processed</c> Kuida hizo lo suyo · <c>unhandled</c> guardado, sin efecto todavía · <c>failed</c> falló, reintente con el mismo id · <c>duplicate</c> · <c>received</c> en curso.
         /// Valores: <c>received</c>, <c>processed</c>, <c>failed</c>, <c>duplicate</c>, <c>unhandled</c>.
         /// </summary>
         [JsonPropertyName("status")]

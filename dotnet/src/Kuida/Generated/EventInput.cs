@@ -16,7 +16,7 @@ namespace Kuida
     public partial class EventInput
     {
         /// <summary>
-        /// Tu id del evento. Es la clave de idempotencia: reenviar el mismo id no repite nada.
+        /// Su id del evento. Es la clave de idempotencia: reenviar el mismo id no repite nada.
         /// Obligatorio.
         /// </summary>
         [JsonPropertyName("id")]

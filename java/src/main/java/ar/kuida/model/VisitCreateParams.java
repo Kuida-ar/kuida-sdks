@@ -89,7 +89,7 @@ public final class VisitCreateParams extends KuidaParams {
       return set("type", type);
     }
 
-    /** Id de la consulta en tu sistema. Si ya existe, se devuelve esa y no se crea otra. */
+    /** Id de la consulta en su sistema. Si ya existe, se devuelve esa y no se crea otra. */
     public Builder externalId(String externalId) {
       return set("externalId", externalId);
     }

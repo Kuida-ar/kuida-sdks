@@ -43,7 +43,7 @@ public final class EventInput extends KuidaParams {
   public static final class Builder extends KuidaParams.AbstractBuilder<Builder, EventInput> {
     Builder() {}
 
-    /** Tu id del evento. Es la clave de idempotencia: reenviar el mismo id no repite nada. */
+    /** Su id del evento. Es la clave de idempotencia: reenviar el mismo id no repite nada. */
     public Builder id(String id) {
       return set("id", id);
     }

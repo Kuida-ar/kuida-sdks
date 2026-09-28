@@ -97,7 +97,7 @@ public class Patient extends KuidaObject {
   }
 
   /**
-   * Id del paciente en tu sistema.
+   * Id del paciente en su sistema.
    *
    * <p>Puede ser <code>null</code>.
    */

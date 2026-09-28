@@ -72,7 +72,7 @@ public class WebhookDelivery extends KuidaObject {
   }
 
   /**
-   * <code>pending</code> en curso o esperando reintento · <code>succeeded</code> tu endpoint respondió 2xx · <code>failed</code> se agotaron los reintentos.
+   * <code>pending</code> en curso o esperando reintento · <code>succeeded</code> su endpoint respondió 2xx · <code>failed</code> se agotaron los reintentos.
    *
    * <p>Valores posibles: <code>pending</code>, <code>succeeded</code>, <code>failed</code>.
    */

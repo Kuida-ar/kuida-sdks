@@ -16,14 +16,14 @@ namespace Kuida
     public partial class WebhookEndpointCreateParams
     {
         /// <summary>
-        /// URL https de tu sistema.
+        /// URL https de su sistema.
         /// Obligatorio.
         /// </summary>
         [JsonPropertyName("url")]
         public string Url { get; set; } = null!;
 
         /// <summary>
-        /// Qué eventos quieres recibir. <c>*</c> = todos.
+        /// Qué eventos quiere recibir. <c>*</c> = todos.
         /// Valores: <c>intake.requested</c>, <c>patient.upserted</c>, <c>appointment.created</c>, <c>appointment.rescheduled</c>, <c>appointment.cancelled</c>, <c>visit.completed</c>, <c>treatment.prescribed</c>, <c>order.issued</c>, <c>intake.created</c>, <c>intake.ready</c>, <c>conversation.handoff</c>, <c>patient.silent</c>, <c>webhook.ping</c>, <c>*</c>.
         /// Obligatorio.
         /// </summary>

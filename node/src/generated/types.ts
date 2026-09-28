@@ -47,9 +47,9 @@ export interface Appointment {
   status: "confirmed" | "pending" | "rescheduled" | "cancelled" | "completed";
   /** Tipo de turno o práctica. */
   type: string | null;
-  /** Id del turno en tu sistema. */
+  /** Id del turno en su sistema. */
   externalId: string | null;
-  /** Por dónde entró: tu API, el conector del sistema de gestión, el agente de Kuida o el equipo. */
+  /** Por dónde entró: su API, el conector del sistema de gestión, el agente de Kuida o el equipo. */
   source: "api" | "pms" | "agent" | "manual";
   cancelledAt: string | null;
   /** Fecha y hora ISO 8601. */
@@ -70,11 +70,11 @@ export interface AppointmentCreateParams {
   startAt: string | Date;
   /** Tipo de turno o práctica. */
   type?: string;
-  /** Id del turno en tu sistema. Si ya existe un turno con ese id, se devuelve ese y no se crea otro. */
+  /** Id del turno en su sistema. Si ya existe un turno con ese id, se devuelve ese y no se crea otro. */
   externalId?: string;
 }
 
-/** Página de resultados. Sigue con `startingAfter` = id del último. */
+/** Página de resultados. Siga con `startingAfter` = id del último. */
 export interface AppointmentList {
   object: "list";
   data: Appointment[];
@@ -116,9 +116,9 @@ export interface Doctor {
   createdAt: string;
 }
 
-/** Cómo conoce tu sistema al profesional. */
+/** Cómo conoce su sistema al profesional. */
 export interface DoctorIdentity {
-  /** Id del profesional en tu sistema. */
+  /** Id del profesional en su sistema. */
   externalId?: string;
   /** Nombre del profesional. */
   fullName?: string;
@@ -126,7 +126,7 @@ export interface DoctorIdentity {
   specialty?: string;
 }
 
-/** Página de resultados. Sigue con `startingAfter` = id del último. */
+/** Página de resultados. Siga con `startingAfter` = id del último. */
 export interface DoctorList {
   object: "list";
   data: Doctor[];
@@ -149,7 +149,7 @@ export interface Error {
     message: string;
     /** El parámetro que causó el error, si aplica (`patient.phone`). */
     param: string | null;
-    /** Id del pedido. Envíalo si escribes a soporte. */
+    /** Id del pedido. Envíelo si escribe a soporte. */
     requestId: string;
     /** Link a la explicación del código de error. */
     docUrl: string;
@@ -167,9 +167,9 @@ export interface Event {
   type: "intake.requested" | "patient.upserted" | "appointment.created" | "appointment.rescheduled" | "appointment.cancelled" | "visit.completed" | "treatment.prescribed" | "order.issued";
   /** Por dónde entró. */
   source: "api" | "pms" | "email" | "tool" | "manual" | "import";
-  /** Identidad del evento en su fuente. Para la API, el `id` que enviaste. */
+  /** Identidad del evento en su fuente. Para la API, el `id` que envió. */
   sourceRef: string;
-  /** `processed` Kuida hizo lo suyo · `unhandled` guardado, sin efecto todavía · `failed` falló, reintenta con el mismo id · `duplicate` · `received` en curso. */
+  /** `processed` Kuida hizo lo suyo · `unhandled` guardado, sin efecto todavía · `failed` falló, reintente con el mismo id · `duplicate` · `received` en curso. */
   status: "received" | "processed" | "failed" | "duplicate" | "unhandled";
   error: string | null;
   /** Lo que produjo el evento (`{ object: "visit", id: "vis_…" }`). */
@@ -198,7 +198,7 @@ export interface EventBatchResponse {
 
 /** Evento `intake.requested` para `events.create` / `events.createBatch`. */
 export interface IntakeRequestedEventInput {
-  /** Tu id del evento. Es la clave de idempotencia: reenviar el mismo id no repite nada. */
+  /** Su id del evento. Es la clave de idempotencia: reenviar el mismo id no repite nada. */
   id: string;
   /**
    * Versión del esquema del evento. Siempre 1 en v1.
@@ -265,7 +265,7 @@ export interface IntakeRequestedEventInput {
 
 /** Evento `patient.upserted` para `events.create` / `events.createBatch`. */
 export interface PatientUpsertedEventInput {
-  /** Tu id del evento. Es la clave de idempotencia: reenviar el mismo id no repite nada. */
+  /** Su id del evento. Es la clave de idempotencia: reenviar el mismo id no repite nada. */
   id: string;
   /**
    * Versión del esquema del evento. Siempre 1 en v1.
@@ -292,7 +292,7 @@ export interface PatientUpsertedEventInput {
 
 /** Evento `appointment.created` para `events.create` / `events.createBatch`. */
 export interface AppointmentCreatedEventInput {
-  /** Tu id del evento. Es la clave de idempotencia: reenviar el mismo id no repite nada. */
+  /** Su id del evento. Es la clave de idempotencia: reenviar el mismo id no repite nada. */
   id: string;
   /**
    * Versión del esquema del evento. Siempre 1 en v1.
@@ -330,7 +330,7 @@ export interface AppointmentCreatedEventInput {
 
 /** Evento `appointment.rescheduled` para `events.create` / `events.createBatch`. */
 export interface AppointmentRescheduledEventInput {
-  /** Tu id del evento. Es la clave de idempotencia: reenviar el mismo id no repite nada. */
+  /** Su id del evento. Es la clave de idempotencia: reenviar el mismo id no repite nada. */
   id: string;
   /**
    * Versión del esquema del evento. Siempre 1 en v1.
@@ -369,7 +369,7 @@ export interface AppointmentRescheduledEventInput {
 
 /** Evento `appointment.cancelled` para `events.create` / `events.createBatch`. */
 export interface AppointmentCancelledEventInput {
-  /** Tu id del evento. Es la clave de idempotencia: reenviar el mismo id no repite nada. */
+  /** Su id del evento. Es la clave de idempotencia: reenviar el mismo id no repite nada. */
   id: string;
   /**
    * Versión del esquema del evento. Siempre 1 en v1.
@@ -408,7 +408,7 @@ export interface AppointmentCancelledEventInput {
 
 /** Evento `visit.completed` para `events.create` / `events.createBatch`. */
 export interface VisitCompletedEventInput {
-  /** Tu id del evento. Es la clave de idempotencia: reenviar el mismo id no repite nada. */
+  /** Su id del evento. Es la clave de idempotencia: reenviar el mismo id no repite nada. */
   id: string;
   /**
    * Versión del esquema del evento. Siempre 1 en v1.
@@ -452,7 +452,7 @@ export interface VisitCompletedEventInput {
 
 /** Evento `treatment.prescribed` para `events.create` / `events.createBatch`. */
 export interface TreatmentPrescribedEventInput {
-  /** Tu id del evento. Es la clave de idempotencia: reenviar el mismo id no repite nada. */
+  /** Su id del evento. Es la clave de idempotencia: reenviar el mismo id no repite nada. */
   id: string;
   /**
    * Versión del esquema del evento. Siempre 1 en v1.
@@ -493,7 +493,7 @@ export interface TreatmentPrescribedEventInput {
 
 /** Evento `order.issued` para `events.create` / `events.createBatch`. */
 export interface OrderIssuedEventInput {
-  /** Tu id del evento. Es la clave de idempotencia: reenviar el mismo id no repite nada. */
+  /** Su id del evento. Es la clave de idempotencia: reenviar el mismo id no repite nada. */
   id: string;
   /**
    * Versión del esquema del evento. Siempre 1 en v1.
@@ -554,7 +554,7 @@ export interface EventInputDataMap {
   "order.issued": OrderIssuedEventInput["data"];
 }
 
-/** Página de resultados. Sigue con `startingAfter` = id del último. */
+/** Página de resultados. Siga con `startingAfter` = id del último. */
 export interface EventList {
   object: "list";
   data: Event[];
@@ -564,7 +564,7 @@ export interface EventList {
 }
 
 export interface EventResult {
-  /** El id que enviaste. */
+  /** El id que envió. */
   id: string;
   accepted: boolean;
   status: "processed" | "duplicate" | "unhandled" | "invalid" | "failed";
@@ -640,7 +640,7 @@ export interface IntakeRequestCreateParams {
   };
 }
 
-/** Página de resultados. Sigue con `startingAfter` = id del último. */
+/** Página de resultados. Siga con `startingAfter` = id del último. */
 export interface IntakeRequestList {
   object: "list";
   data: IntakeRequest[];
@@ -662,7 +662,7 @@ export interface Patient {
   phone: string | null;
   email: string | null;
   dni: string | null;
-  /** Id del paciente en tu sistema. */
+  /** Id del paciente en su sistema. */
   externalId: string | null;
   /** Fecha de nacimiento (AAAA-MM-DD). */
   dateOfBirth: string | null;
@@ -688,7 +688,7 @@ export interface PatientCreateParams {
    * Formato: email.
    */
   email?: string;
-  /** Id del paciente en tu sistema. */
+  /** Id del paciente en su sistema. */
   externalId?: string;
   /**
    * Fecha ISO 8601 (AAAA-MM-DD).
@@ -697,7 +697,7 @@ export interface PatientCreateParams {
   dateOfBirth?: string;
 }
 
-/** Cómo conoce tu sistema al paciente. Kuida lo busca por teléfono y después por DNI; si no existe, lo crea. */
+/** Cómo conoce su sistema al paciente. Kuida lo busca por teléfono y después por DNI; si no existe, lo crea. */
 export interface PatientIdentity {
   /** Celular con WhatsApp, en cualquier formato; Kuida lo normaliza. Es la identidad principal del paciente. */
   phone?: string;
@@ -710,7 +710,7 @@ export interface PatientIdentity {
    * Formato: email.
    */
   email?: string;
-  /** Id del paciente en tu sistema. */
+  /** Id del paciente en su sistema. */
   externalId?: string;
   /**
    * Fecha ISO 8601 (AAAA-MM-DD).
@@ -719,7 +719,7 @@ export interface PatientIdentity {
   dateOfBirth?: string;
 }
 
-/** Página de resultados. Sigue con `startingAfter` = id del último. */
+/** Página de resultados. Siga con `startingAfter` = id del último. */
 export interface PatientList {
   object: "list";
   data: Patient[];
@@ -728,10 +728,10 @@ export interface PatientList {
   url: string;
 }
 
-/** Un paciente: su id de Kuida (`pat_…`) o los datos con que lo conoce tu sistema. */
+/** Un paciente: su id de Kuida (`pat_…`) o los datos con que lo conoce su sistema. */
 export type PatientReference = string | PatientIdentity;
 
-/** Solo cambia lo que envías. El teléfono no se cambia: es la identidad. */
+/** Solo cambia lo que envía. El teléfono no se cambia: es la identidad. */
 export interface PatientUpdateParams {
   fullName?: string;
   /** Formato: email. */
@@ -786,7 +786,7 @@ export interface TreatmentCreateParams {
   endDate?: string | Date;
 }
 
-/** Página de resultados. Sigue con `startingAfter` = id del último. */
+/** Página de resultados. Siga con `startingAfter` = id del último. */
 export interface TreatmentList {
   object: "list";
   data: Treatment[];
@@ -827,7 +827,7 @@ export interface VisitCreateParams {
   /** Cuándo se atendió. */
   visitedAt: string | Date;
   type?: string;
-  /** Id de la consulta en tu sistema. Si ya existe, se devuelve esa y no se crea otra. */
+  /** Id de la consulta en su sistema. Si ya existe, se devuelve esa y no se crea otra. */
   externalId?: string;
   /** Turno del que sale la consulta: id de Kuida (`apt_…`) o el `externalId` del turno. Lo marca como atendido. */
   appointment?: string;
@@ -835,7 +835,7 @@ export interface VisitCreateParams {
   notes?: string;
 }
 
-/** Página de resultados. Sigue con `startingAfter` = id del último. */
+/** Página de resultados. Siga con `startingAfter` = id del último. */
 export interface VisitList {
   object: "list";
   data: Visit[];
@@ -858,7 +858,7 @@ export interface WebhookDelivery {
    */
   webhookEndpoint: string;
   eventType: string;
-  /** `pending` en curso o esperando reintento · `succeeded` tu endpoint respondió 2xx · `failed` se agotaron los reintentos. */
+  /** `pending` en curso o esperando reintento · `succeeded` su endpoint respondió 2xx · `failed` se agotaron los reintentos. */
   status: "pending" | "succeeded" | "failed";
   attempts: number;
   lastStatusCode: number | null;
@@ -871,7 +871,7 @@ export interface WebhookDelivery {
   createdAt: string;
 }
 
-/** Página de resultados. Sigue con `startingAfter` = id del último. */
+/** Página de resultados. Siga con `startingAfter` = id del último. */
 export interface WebhookDeliveryList {
   object: "list";
   data: WebhookDelivery[];
@@ -880,7 +880,7 @@ export interface WebhookDeliveryList {
   url: string;
 }
 
-/** Una URL de tu sistema a la que Kuida le avisa lo que pasa. */
+/** Una URL de su sistema a la que Kuida le avisa lo que pasa. */
 export interface WebhookEndpoint {
   /**
    * Id del endpoint.
@@ -907,16 +907,16 @@ export interface WebhookEndpoint {
 
 export interface WebhookEndpointCreateParams {
   /**
-   * URL https de tu sistema.
+   * URL https de su sistema.
    * Formato: uri.
    */
   url: string;
-  /** Qué eventos quieres recibir. `*` = todos. */
+  /** Qué eventos quiere recibir. `*` = todos. */
   enabledEvents: Array<"intake.requested" | "patient.upserted" | "appointment.created" | "appointment.rescheduled" | "appointment.cancelled" | "visit.completed" | "treatment.prescribed" | "order.issued" | "intake.created" | "intake.ready" | "conversation.handoff" | "patient.silent" | "webhook.ping" | "*">;
   description?: string;
 }
 
-/** Página de resultados. Sigue con `startingAfter` = id del último. */
+/** Página de resultados. Siga con `startingAfter` = id del último. */
 export interface WebhookEndpointList {
   object: "list";
   data: WebhookEndpoint[];
@@ -934,9 +934,9 @@ export interface WebhookEndpointUpdateParams {
   disabled?: boolean;
 }
 
-/** Lo que Kuida le manda a tu endpoint. */
+/** Lo que Kuida le manda a su endpoint. */
 export interface WebhookEvent {
-  /** Id de la entrega (`whd_…`). Estable entre reintentos: deduplica por este campo. */
+  /** Id de la entrega (`whd_…`). Estable entre reintentos: deduplique por este campo. */
   id: string;
   object: "event";
   type: "intake.requested" | "patient.upserted" | "appointment.created" | "appointment.rescheduled" | "appointment.cancelled" | "visit.completed" | "treatment.prescribed" | "order.issued" | "intake.created" | "intake.ready" | "conversation.handoff" | "patient.silent" | "webhook.ping";
@@ -961,7 +961,7 @@ export interface PatientListParams {
   startingAfter?: string;
   /** Cursor: id del primer objeto de la página actual. Devuelve los anteriores. */
   endingBefore?: string;
-  /** Filtra por teléfono (cualquier formato). */
+  /** Filtre por teléfono (cualquier formato). */
   phone?: string;
   dni?: string;
   externalId?: string;
@@ -978,7 +978,7 @@ export interface DoctorListParams {
   startingAfter?: string;
   /** Cursor: id del primer objeto de la página actual. Devuelve los anteriores. */
   endingBefore?: string;
-  /** Filtra por activos o inactivos. */
+  /** Filtre por activos o inactivos. */
   active?: boolean | "true" | "false";
   externalId?: string;
 }

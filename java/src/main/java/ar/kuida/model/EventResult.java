@@ -27,7 +27,7 @@ public class EventResult extends KuidaObject {
   /** Constructor vacío: los objetos los arma el SDK a partir de las respuestas. */
   public EventResult() {}
 
-  /** El id que enviaste. */
+  /** El id que envió. */
   public String getId() {
     return id;
   }

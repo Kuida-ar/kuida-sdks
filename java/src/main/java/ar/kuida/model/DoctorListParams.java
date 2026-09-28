@@ -34,7 +34,7 @@ public final class DoctorListParams extends KuidaParams {
       return set("endingBefore", endingBefore);
     }
 
-    /** Filtra por activos o inactivos. */
+    /** Filtre por activos o inactivos. */
     public Builder active(Boolean active) {
       return set("active", active);
     }

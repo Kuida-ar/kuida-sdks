@@ -5,7 +5,7 @@ import ar.kuida.KuidaParams;
 import java.time.LocalDate;
 import java.util.Map;
 
-/** Solo cambia lo que envías. El teléfono no se cambia: es la identidad. */
+/** Solo cambia lo que envía. El teléfono no se cambia: es la identidad. */
 public final class PatientUpdateParams extends KuidaParams {
   private PatientUpdateParams(Map<String, Object> values) {
     super(values);

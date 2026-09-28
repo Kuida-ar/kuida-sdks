@@ -11,7 +11,7 @@ namespace Kuida\Model;
  * @property-read string $object
  * @property-read string $webhookEndpoint Endpoint destino.
  * @property-read string $eventType
- * @property-read string $status `pending` en curso o esperando reintento · `succeeded` tu endpoint respondió 2xx · `failed` se agotaron los reintentos. Valores: `pending`, `succeeded`, `failed`.
+ * @property-read string $status `pending` en curso o esperando reintento · `succeeded` su endpoint respondió 2xx · `failed` se agotaron los reintentos. Valores: `pending`, `succeeded`, `failed`.
  * @property-read int $attempts
  * @property-read int|null $lastStatusCode
  * @property-read string|null $lastError

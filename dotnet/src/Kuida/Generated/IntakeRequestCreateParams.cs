@@ -16,7 +16,7 @@ namespace Kuida
     public partial class IntakeRequestCreateParams
     {
         /// <summary>
-        /// Cómo conoce tu sistema al paciente. Kuida lo busca por teléfono y después por DNI; si no existe, lo crea.
+        /// Cómo conoce su sistema al paciente. Kuida lo busca por teléfono y después por DNI; si no existe, lo crea.
         /// </summary>
         [JsonPropertyName("patient")]
         public PatientIdentity? Patient { get; set; }

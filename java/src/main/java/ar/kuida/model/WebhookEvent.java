@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName;
 import java.time.OffsetDateTime;
 import java.util.Map;
 
-/** Lo que Kuida le manda a tu endpoint. */
+/** Lo que Kuida le manda a su endpoint. */
 public class WebhookEvent extends KuidaObject {
   @SerializedName("id")
   private String id;
@@ -35,7 +35,7 @@ public class WebhookEvent extends KuidaObject {
   /** Constructor vacío: los objetos los arma el SDK a partir de las respuestas. */
   public WebhookEvent() {}
 
-  /** Id de la entrega (<code>whd_…</code>). Estable entre reintentos: deduplica por este campo. */
+  /** Id de la entrega (<code>whd_…</code>). Estable entre reintentos: deduplique por este campo. */
   public String getId() {
     return id;
   }

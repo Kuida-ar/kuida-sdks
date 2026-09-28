@@ -16,7 +16,7 @@ namespace Kuida
     public partial class AppointmentCreateParams
     {
         /// <summary>
-        /// Un paciente: su id de Kuida (<c>pat_…</c>) o los datos con que lo conoce tu sistema.
+        /// Un paciente: su id de Kuida (<c>pat_…</c>) o los datos con que lo conoce su sistema.
         /// Obligatorio.
         /// </summary>
         [JsonPropertyName("patient")]
@@ -42,7 +42,7 @@ namespace Kuida
         public string? Type { get; set; }
 
         /// <summary>
-        /// Id del turno en tu sistema. Si ya existe un turno con ese id, se devuelve ese y no se crea otro.
+        /// Id del turno en su sistema. Si ya existe un turno con ese id, se devuelve ese y no se crea otro.
         /// </summary>
         [JsonPropertyName("externalId")]
         public string? ExternalId { get; set; }

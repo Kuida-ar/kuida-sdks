@@ -16,7 +16,7 @@ namespace Kuida
     public partial class EventResult : KuidaObject, IHasId
     {
         /// <summary>
-        /// El id que enviaste.
+        /// El id que envió.
         /// </summary>
         [JsonPropertyName("id")]
         public string Id { get; set; } = null!;

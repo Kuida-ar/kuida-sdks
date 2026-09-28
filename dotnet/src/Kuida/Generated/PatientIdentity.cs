@@ -11,7 +11,7 @@ using System.Text.Json.Serialization;
 namespace Kuida
 {
     /// <summary>
-    /// Cómo conoce tu sistema al paciente. Kuida lo busca por teléfono y después por DNI; si no existe, lo crea.
+    /// Cómo conoce su sistema al paciente. Kuida lo busca por teléfono y después por DNI; si no existe, lo crea.
     /// </summary>
     public partial class PatientIdentity
     {
@@ -40,7 +40,7 @@ namespace Kuida
         public string? Email { get; set; }
 
         /// <summary>
-        /// Id del paciente en tu sistema.
+        /// Id del paciente en su sistema.
         /// </summary>
         [JsonPropertyName("externalId")]
         public string? ExternalId { get; set; }

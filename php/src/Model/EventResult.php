@@ -7,7 +7,7 @@ namespace Kuida\Model;
 /**
  * Objeto `EventResult` de la API de Kuida.
  *
- * @property-read string $id El id que enviaste.
+ * @property-read string $id El id que envió.
  * @property-read bool $accepted
  * @property-read string $status Valores: `processed`, `duplicate`, `unhandled`, `invalid`, `failed`.
  * @property-read string|null $event Id del evento en Kuida (`evt_…`).

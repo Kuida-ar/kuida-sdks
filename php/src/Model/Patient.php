@@ -13,7 +13,7 @@ namespace Kuida\Model;
  * @property-read string|null $phone Teléfono normalizado.
  * @property-read string|null $email
  * @property-read string|null $dni
- * @property-read string|null $externalId Id del paciente en tu sistema.
+ * @property-read string|null $externalId Id del paciente en su sistema.
  * @property-read string|null $dateOfBirth Fecha de nacimiento (AAAA-MM-DD).
  * @property-read string $stage Estado básico del paciente en Kuida. Valores: `pending_follow_up`, `in_conversation`, `scheduled`, `periodic_follow_up`, `discharged`, `lost`.
  * @property-read bool $optedOut Si el paciente pidió no recibir mensajes. Kuida no le escribe.

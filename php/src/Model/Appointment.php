@@ -14,8 +14,8 @@ namespace Kuida\Model;
  * @property-read string $startAt Fecha y hora ISO 8601.
  * @property-read string $status Valores: `confirmed`, `pending`, `rescheduled`, `cancelled`, `completed`.
  * @property-read string|null $type Tipo de turno o práctica.
- * @property-read string|null $externalId Id del turno en tu sistema.
- * @property-read string $source Por dónde entró: tu API, el conector del sistema de gestión, el agente de Kuida o el equipo. Valores: `api`, `pms`, `agent`, `manual`.
+ * @property-read string|null $externalId Id del turno en su sistema.
+ * @property-read string $source Por dónde entró: su API, el conector del sistema de gestión, el agente de Kuida o el equipo. Valores: `api`, `pms`, `agent`, `manual`.
  * @property-read string|null $cancelledAt Fecha y hora ISO 8601.
  * @property-read string $createdAt Fecha y hora ISO 8601.
  * @property-read string $updatedAt Fecha y hora ISO 8601.

@@ -44,7 +44,7 @@ public final class PatientCreateParams extends KuidaParams {
       return set("email", email);
     }
 
-    /** Id del paciente en tu sistema. */
+    /** Id del paciente en su sistema. */
     public Builder externalId(String externalId) {
       return set("externalId", externalId);
     }

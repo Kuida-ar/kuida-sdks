@@ -60,13 +60,13 @@ namespace Kuida
         public string? Type { get; set; }
 
         /// <summary>
-        /// Id del turno en tu sistema.
+        /// Id del turno en su sistema.
         /// </summary>
         [JsonPropertyName("externalId")]
         public string? ExternalId { get; set; }
 
         /// <summary>
-        /// Por dónde entró: tu API, el conector del sistema de gestión, el agente de Kuida o el equipo.
+        /// Por dónde entró: su API, el conector del sistema de gestión, el agente de Kuida o el equipo.
         /// Valores: <c>api</c>, <c>pms</c>, <c>agent</c>, <c>manual</c>.
         /// </summary>
         [JsonPropertyName("source")]

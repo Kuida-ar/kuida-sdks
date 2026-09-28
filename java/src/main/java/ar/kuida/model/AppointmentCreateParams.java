@@ -89,7 +89,7 @@ public final class AppointmentCreateParams extends KuidaParams {
       return set("type", type);
     }
 
-    /** Id del turno en tu sistema. Si ya existe un turno con ese id, se devuelve ese y no se crea otro. */
+    /** Id del turno en su sistema. Si ya existe un turno con ese id, se devuelve ese y no se crea otro. */
     public Builder externalId(String externalId) {
       return set("externalId", externalId);
     }

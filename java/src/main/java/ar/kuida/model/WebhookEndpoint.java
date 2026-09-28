@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName;
 import java.time.OffsetDateTime;
 import java.util.List;
 
-/** Una URL de tu sistema a la que Kuida le avisa lo que pasa. */
+/** Una URL de su sistema a la que Kuida le avisa lo que pasa. */
 public class WebhookEndpoint extends KuidaObject {
   @SerializedName("id")
   private String id;

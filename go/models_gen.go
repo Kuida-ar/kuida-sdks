@@ -72,7 +72,7 @@ const (
 	AppointmentStatusCompleted   AppointmentStatus = "completed"
 )
 
-// AppointmentSource enumera por dónde entró: tu API, el conector del sistema de
+// AppointmentSource enumera por dónde entró: su API, el conector del sistema de
 // gestión, el agente de Kuida o el equipo.
 type AppointmentSource string
 
@@ -113,7 +113,7 @@ const (
 )
 
 // EventStatus enumera `processed` Kuida hizo lo suyo · `unhandled` guardado, sin efecto
-// todavía · `failed` falló, reintenta con el mismo id · `duplicate` · `received` en
+// todavía · `failed` falló, reintente con el mismo id · `duplicate` · `received` en
 // curso.
 type EventStatus string
 
@@ -188,7 +188,7 @@ const (
 )
 
 // WebhookDeliveryStatus enumera `pending` en curso o esperando reintento · `succeeded`
-// tu endpoint respondió 2xx · `failed` se agotaron los reintentos.
+// su endpoint respondió 2xx · `failed` se agotaron los reintentos.
 type WebhookDeliveryStatus string
 
 // Valores de WebhookDeliveryStatus.
@@ -309,9 +309,9 @@ type Appointment struct {
 	Status  AppointmentStatus `json:"status"`
 	// Type: Tipo de turno o práctica.
 	Type *string `json:"type"`
-	// ExternalID: Id del turno en tu sistema.
+	// ExternalID: Id del turno en su sistema.
 	ExternalID *string `json:"externalId"`
-	// Source: Por dónde entró: tu API, el conector del sistema de gestión, el agente de
+	// Source: Por dónde entró: su API, el conector del sistema de gestión, el agente de
 	// Kuida o el equipo.
 	Source AppointmentSource `json:"source"`
 	// CancelledAt: Fecha y hora ISO 8601.
@@ -425,10 +425,10 @@ type Event struct {
 	Type   EventType `json:"type"`
 	// Source: Por dónde entró.
 	Source EventSource `json:"source"`
-	// SourceRef: Identidad del evento en su fuente. Para la API, el `id` que enviaste.
+	// SourceRef: Identidad del evento en su fuente. Para la API, el `id` que envió.
 	SourceRef string `json:"sourceRef"`
 	// Status: `processed` Kuida hizo lo suyo · `unhandled` guardado, sin efecto todavía ·
-	// `failed` falló, reintenta con el mismo id · `duplicate` · `received` en curso.
+	// `failed` falló, reintente con el mismo id · `duplicate` · `received` en curso.
 	Status EventStatus `json:"status"`
 	Error  *string     `json:"error"`
 	// Result: Lo que produjo el evento (`{ object: "visit", id: "vis_…" }`).
@@ -522,7 +522,7 @@ func (m *EventBatchResponse) setLastResponse(r *APIResponse) { m.LastResponse = 
 
 // EventResult: objeto de la API.
 type EventResult struct {
-	// ID: El id que enviaste.
+	// ID: El id que envió.
 	ID       string            `json:"id"`
 	Accepted bool              `json:"accepted"`
 	Status   EventResultStatus `json:"status"`
@@ -620,7 +620,7 @@ type Patient struct {
 	Phone *string `json:"phone"`
 	Email *string `json:"email"`
 	DNI   *string `json:"dni"`
-	// ExternalID: Id del paciente en tu sistema.
+	// ExternalID: Id del paciente en su sistema.
 	ExternalID *string `json:"externalId"`
 	// DateOfBirth: Fecha de nacimiento (AAAA-MM-DD).
 	DateOfBirth *string `json:"dateOfBirth"`
@@ -760,7 +760,7 @@ type WebhookDelivery struct {
 	// WebhookEndpoint: Endpoint destino.
 	WebhookEndpoint string `json:"webhookEndpoint"`
 	EventType       string `json:"eventType"`
-	// Status: `pending` en curso o esperando reintento · `succeeded` tu endpoint respondió
+	// Status: `pending` en curso o esperando reintento · `succeeded` su endpoint respondió
 	// 2xx · `failed` se agotaron los reintentos.
 	Status         WebhookDeliveryStatus `json:"status"`
 	Attempts       int64                 `json:"attempts"`
@@ -800,7 +800,7 @@ func (m *WebhookDelivery) Raw() json.RawMessage { return m.raw }
 
 func (m *WebhookDelivery) setLastResponse(r *APIResponse) { m.LastResponse = r }
 
-// WebhookEndpoint: Una URL de tu sistema a la que Kuida le avisa lo que pasa.
+// WebhookEndpoint: Una URL de su sistema a la que Kuida le avisa lo que pasa.
 type WebhookEndpoint struct {
 	// ID: Id del endpoint.
 	ID          string  `json:"id"`
@@ -869,9 +869,9 @@ func (m *WebhookEndpointLastError) UnmarshalJSON(data []byte) error {
 // que este SDK todavía no conoce.
 func (m *WebhookEndpointLastError) Raw() json.RawMessage { return m.raw }
 
-// WebhookEvent: Lo que Kuida le manda a tu endpoint.
+// WebhookEvent: Lo que Kuida le manda a su endpoint.
 type WebhookEvent struct {
-	// ID: Id de la entrega (`whd_…`). Estable entre reintentos: deduplica por este campo.
+	// ID: Id de la entrega (`whd_…`). Estable entre reintentos: deduplique por este campo.
 	ID         string           `json:"id"`
 	Object     string           `json:"object"`
 	Type       WebhookEventType `json:"type"`
@@ -923,7 +923,7 @@ type AppointmentCreateParams struct {
 	StartAt time.Time `json:"startAt,omitempty"`
 	// Type: Tipo de turno o práctica.
 	Type *string `json:"type,omitempty"`
-	// ExternalID: Id del turno en tu sistema. Si ya existe un turno con ese id, se devuelve
+	// ExternalID: Id del turno en su sistema. Si ya existe un turno con ese id, se devuelve
 	// ese y no se crea otro.
 	ExternalID *string `json:"externalId,omitempty"`
 }
@@ -946,9 +946,9 @@ type AppointmentUpdateParams struct {
 	Type    *string          `json:"type,omitempty"`
 }
 
-// DoctorIdentity: Cómo conoce tu sistema al profesional.
+// DoctorIdentity: Cómo conoce su sistema al profesional.
 type DoctorIdentity struct {
-	// ExternalID: Id del profesional en tu sistema.
+	// ExternalID: Id del profesional en su sistema.
 	ExternalID *string `json:"externalId,omitempty"`
 	// FullName: Nombre del profesional.
 	FullName *string `json:"fullName,omitempty"`
@@ -958,7 +958,7 @@ type DoctorIdentity struct {
 
 // EventInput: Un evento del catálogo v1. El `type` define la forma de `data`.
 type EventInput struct {
-	// ID: Tu id del evento. Es la clave de idempotencia: reenviar el mismo id no repite
+	// ID: Su id del evento. Es la clave de idempotencia: reenviar el mismo id no repite
 	// nada.
 	ID string `json:"id,omitempty"`
 	// SchemaVersion: Versión del esquema del evento. Siempre 1 en v1.
@@ -1011,7 +1011,7 @@ type IntakeRequestCreateParams struct {
 	Sender *IntakeSender `json:"sender,omitempty"`
 }
 
-// PatientIdentity: Cómo conoce tu sistema al paciente. Kuida lo busca por teléfono y
+// PatientIdentity: Cómo conoce su sistema al paciente. Kuida lo busca por teléfono y
 // después por DNI; si no existe, lo crea.
 type PatientIdentity struct {
 	// Phone: Celular con WhatsApp, en cualquier formato; Kuida lo normaliza. Es la identidad
@@ -1023,7 +1023,7 @@ type PatientIdentity struct {
 	DNI *string `json:"dni,omitempty"`
 	// Email: Correo electrónico.
 	Email *string `json:"email,omitempty"`
-	// ExternalID: Id del paciente en tu sistema.
+	// ExternalID: Id del paciente en su sistema.
 	ExternalID *string `json:"externalId,omitempty"`
 	// DateOfBirth: Fecha ISO 8601 (AAAA-MM-DD).
 	DateOfBirth *string `json:"dateOfBirth,omitempty"`
@@ -1046,13 +1046,13 @@ type PatientCreateParams struct {
 	DNI *string `json:"dni,omitempty"`
 	// Email: Correo electrónico.
 	Email *string `json:"email,omitempty"`
-	// ExternalID: Id del paciente en tu sistema.
+	// ExternalID: Id del paciente en su sistema.
 	ExternalID *string `json:"externalId,omitempty"`
 	// DateOfBirth: Fecha ISO 8601 (AAAA-MM-DD).
 	DateOfBirth *string `json:"dateOfBirth,omitempty"`
 }
 
-// PatientUpdateParams: Solo cambia lo que envías. El teléfono no se cambia: es la
+// PatientUpdateParams: Solo cambia lo que envía. El teléfono no se cambia: es la
 // identidad.
 type PatientUpdateParams struct {
 	FullName   *string `json:"fullName,omitempty"`
@@ -1085,7 +1085,7 @@ type VisitCreateParams struct {
 	// VisitedAt: Cuándo se atendió.
 	VisitedAt time.Time `json:"visitedAt,omitempty"`
 	Type      *string   `json:"type,omitempty"`
-	// ExternalID: Id de la consulta en tu sistema. Si ya existe, se devuelve esa y no se
+	// ExternalID: Id de la consulta en su sistema. Si ya existe, se devuelve esa y no se
 	// crea otra.
 	ExternalID *string `json:"externalId,omitempty"`
 	// Appointment: Turno del que sale la consulta: id de Kuida (`apt_…`) o el `externalId`
@@ -1107,9 +1107,9 @@ func (p VisitCreateParams) MarshalJSON() ([]byte, error) {
 
 // WebhookEndpointCreateParams: parámetros de entrada.
 type WebhookEndpointCreateParams struct {
-	// URL: URL https de tu sistema.
+	// URL: URL https de su sistema.
 	URL string `json:"url,omitempty"`
-	// EnabledEvents: Qué eventos quieres recibir. `*` = todos.
+	// EnabledEvents: Qué eventos quiere recibir. `*` = todos.
 	EnabledEvents []WebhookEventType `json:"enabledEvents,omitempty"`
 	Description   *string            `json:"description,omitempty"`
 }
@@ -1189,7 +1189,7 @@ func (p *AppointmentListParams) query() url.Values {
 // DoctorListParams son los filtros de Doctor.List. Los campos en nil no se envían.
 type DoctorListParams struct {
 	ListParams
-	// Active: Filtra por activos o inactivos.
+	// Active: Filtre por activos o inactivos.
 	Active     *bool
 	ExternalID *string
 }
@@ -1257,7 +1257,7 @@ func (p *IntakeRequestListParams) query() url.Values {
 // PatientListParams son los filtros de Patient.List. Los campos en nil no se envían.
 type PatientListParams struct {
 	ListParams
-	// Phone: Filtra por teléfono (cualquier formato).
+	// Phone: Filtre por teléfono (cualquier formato).
 	Phone      *string
 	DNI        *string
 	ExternalID *string

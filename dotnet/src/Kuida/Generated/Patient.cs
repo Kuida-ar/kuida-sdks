@@ -53,7 +53,7 @@ namespace Kuida
         public string? Dni { get; set; }
 
         /// <summary>
-        /// Id del paciente en tu sistema.
+        /// Id del paciente en su sistema.
         /// </summary>
         [JsonPropertyName("externalId")]
         public string? ExternalId { get; set; }

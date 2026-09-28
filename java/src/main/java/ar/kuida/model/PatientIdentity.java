@@ -5,7 +5,7 @@ import ar.kuida.KuidaParams;
 import java.time.LocalDate;
 import java.util.Map;
 
-/** Cómo conoce tu sistema al paciente. Kuida lo busca por teléfono y después por DNI; si no existe, lo crea. */
+/** Cómo conoce su sistema al paciente. Kuida lo busca por teléfono y después por DNI; si no existe, lo crea. */
 public final class PatientIdentity extends KuidaParams {
   private PatientIdentity(Map<String, Object> values) {
     super(values);
@@ -40,7 +40,7 @@ public final class PatientIdentity extends KuidaParams {
       return set("email", email);
     }
 
-    /** Id del paciente en tu sistema. */
+    /** Id del paciente en su sistema. */
     public Builder externalId(String externalId) {
       return set("externalId", externalId);
     }

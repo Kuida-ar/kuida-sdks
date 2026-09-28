@@ -41,7 +41,7 @@ namespace Kuida
         public string EventType { get; set; } = null!;
 
         /// <summary>
-        /// <c>pending</c> en curso o esperando reintento · <c>succeeded</c> tu endpoint respondió 2xx · <c>failed</c> se agotaron los reintentos.
+        /// <c>pending</c> en curso o esperando reintento · <c>succeeded</c> su endpoint respondió 2xx · <c>failed</c> se agotaron los reintentos.
         /// Valores: <c>pending</c>, <c>succeeded</c>, <c>failed</c>.
         /// </summary>
         [JsonPropertyName("status")]

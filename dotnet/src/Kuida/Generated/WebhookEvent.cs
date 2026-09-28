@@ -11,12 +11,12 @@ using System.Text.Json.Serialization;
 namespace Kuida
 {
     /// <summary>
-    /// Lo que Kuida le manda a tu endpoint.
+    /// Lo que Kuida le manda a su endpoint.
     /// </summary>
     public partial class WebhookEvent : KuidaObject, IHasId
     {
         /// <summary>
-        /// Id de la entrega (<c>whd_…</c>). Estable entre reintentos: deduplica por este campo.
+        /// Id de la entrega (<c>whd_…</c>). Estable entre reintentos: deduplique por este campo.
         /// </summary>
         [JsonPropertyName("id")]
         public string Id { get; set; } = null!;

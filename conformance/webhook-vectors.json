@@ -1,0 +1,9 @@
+{
+  "description": "Vector fijo para verificar la firma de webhooks. Con tolerancia, usá now = timestamp. Además cada SDK firma un cuerpo propio con la hora actual.",
+  "secret": "whsec_test_4d3a9e1f0b8c7d6e5f4a3b2c1d0e9f8a",
+  "timestamp": "1790000000",
+  "payload": "{\"id\":\"whd_cmock000000000000000001\",\"object\":\"event\",\"type\":\"intake.ready\",\"apiVersion\":\"2026-09-28\",\"livemode\":false,\"occurredAt\":\"2026-09-28T12:00:00.000Z\",\"ref\":\"cmockintake0001\",\"data\":{\"intake\":{\"id\":\"cmockintake0001\",\"status\":\"LISTA\"},\"patient\":{\"fullName\":\"Paciente Demo\"}}}",
+  "signatureHeader": "sha256=ba8111b5e736d6aad3b38bba136722a80e10bac6f8bac7c17279b2c3767d7f1a",
+  "wrongSecret": "whsec_otro",
+  "tamperedPayload": "{\"id\":\"whd_cmock000000000000000001\",\"object\":\"event\",\"type\":\"intake.ready\",\"apiVersion\":\"2026-09-28\",\"livemode\":false,\"occurredAt\":\"2026-09-28T12:00:00.000Z\",\"ref\":\"cmockintake0001\",\"data\":{\"intake\":{\"id\":\"cmockintake0001\",\"status\":\"LISTA\"},\"patient\":{\"fullName\":\"Paciente Otro\"}}}"
+}

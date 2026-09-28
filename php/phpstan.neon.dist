@@ -1,0 +1,11 @@
+parameters:
+    level: 8
+    # El SDK corre en PHP 7.4: PHPStan marca sintaxis, tipos y funciones que no existen ahí.
+    phpVersion: 70400
+    paths:
+        - src
+        - scripts
+        - init.php
+    # Los tipos de PHPDoc documentan lo esperado; el SDK igual valida en tiempo de
+    # ejecución lo que llega del usuario (PHP 7.4 no tiene tipos unión en firmas).
+    treatPhpDocTypesAsCertain: false

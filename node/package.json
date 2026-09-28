@@ -1,0 +1,61 @@
+{
+  "name": "@kuida/sdk",
+  "version": "0.1.0",
+  "description": "SDK oficial de la API de Kuida para Node.js y TypeScript: pacientes, turnos, consultas, solicitudes de ingreso, tratamientos, eventos y webhooks.",
+  "license": "MIT",
+  "author": "Kuida <desarrolladores@kuida.ar>",
+  "homepage": "https://www.kuida.ar/desarrolladores",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Kuida-ar/kuida-sdks",
+    "directory": "node"
+  },
+  "bugs": {
+    "url": "https://github.com/Kuida-ar/kuida-sdks/issues"
+  },
+  "keywords": [
+    "kuida",
+    "api",
+    "sdk",
+    "salud",
+    "pacientes",
+    "whatsapp",
+    "webhooks"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/cjs/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/esm/index.d.ts",
+        "default": "./dist/esm/index.js"
+      },
+      "require": {
+        "types": "./dist/cjs/index.d.ts",
+        "default": "./dist/cjs/index.js"
+      }
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "sideEffects": false,
+  "scripts": {
+    "generate": "node scripts/generate.mjs",
+    "build": "node scripts/clean.mjs dist && tsc -p tsconfig.esm.json && tsc -p tsconfig.cjs.json && node scripts/write-dist-packages.mjs",
+    "typecheck": "tsc -p tsconfig.test.json --noEmit",
+    "test": "node scripts/clean.mjs .test-build && tsc -p tsconfig.test.json && node --test .test-build/test/conformance.test.js .test-build/test/coverage.test.js",
+    "prepublishOnly": "npm run generate && npm run build && npm test"
+  },
+  "devDependencies": {
+    "@types/node": "^18.19.0",
+    "typescript": "^5.6.0"
+  }
+}

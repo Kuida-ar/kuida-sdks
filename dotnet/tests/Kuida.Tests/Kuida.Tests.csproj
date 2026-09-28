@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <IsPackable>false</IsPackable>
+    <IsTestProject>true</IsTestProject>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.14.1" />
+    <PackageReference Include="xunit" Version="2.9.3" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="3.1.4" />
+  </ItemGroup>
+
+  <!--
+    Por defecto los tests usan el build net8.0 del SDK. Para correrlos contra el build
+    netstandard2.0 (el que usa .NET Framework): dotnet test -p:KuidaTarget=netstandard2.0
+  -->
+  <ItemGroup Condition="'$(KuidaTarget)' == ''">
+    <ProjectReference Include="../../src/Kuida/Kuida.csproj" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(KuidaTarget)' != ''">
+    <ProjectReference Include="../../src/Kuida/Kuida.csproj" SetTargetFramework="TargetFramework=$(KuidaTarget)" />
+    <!-- Con SetTargetFramework no fluyen las dependencias del build netstandard2.0. -->
+    <PackageReference Include="System.Text.Json" Version="8.0.5" />
+    <PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="8.0.0" />
+  </ItemGroup>
+
+</Project>

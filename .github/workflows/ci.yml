@@ -47,7 +47,7 @@ jobs:
         run: |
           case "${{ matrix.sdk }}" in
             node)   cd node && npm ci && npm run build ;;
-            python) cd python && python -m pip install -e ".[dev]" ;;
+            python) cd python && python -m pip install -e ".[test]" ;;
             php)    cd php && composer install --no-interaction ;;
             *) ;;
           esac

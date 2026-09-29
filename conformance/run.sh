@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Corre la suite de conformidad de un SDK (o de todos) contra el mock.
-#   conformance/run.sh node|python|dotnet|java|php|go|all
+#   conformance/run.sh node|python|all
 set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 PORT="${PORT:-12111}"
@@ -16,16 +16,12 @@ run() {
   case "$1" in
     node)   (cd "$ROOT/node" && npm test --silent) ;;
     python) (cd "$ROOT/python" && PY=python3 && [[ -x .venv/bin/python ]] && PY=.venv/bin/python; "$PY" -m pytest -q) ;;
-    dotnet) (cd "$ROOT/dotnet" && dotnet test --nologo -v q) ;;
-    java)   (cd "$ROOT/java" && mvn -q -B test) ;;
-    php)    (cd "$ROOT/php" && composer test --quiet) ;;
-    go)     (cd "$ROOT/go" && go test ./...) ;;
     *) echo "lenguaje desconocido: $1"; exit 2 ;;
   esac
 }
 
 if [[ "${1:-all}" == "all" ]]; then
-  for l in node python dotnet java php go; do run "$l"; done
+  for l in node python; do run "$l"; done
 else
   run "$1"
 fi

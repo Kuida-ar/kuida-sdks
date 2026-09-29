@@ -12,7 +12,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        sdk: [node, python, dotnet, java, php, go]
+        sdk: [node, python]
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -22,33 +22,11 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.9"
-      - if: matrix.sdk == 'dotnet'
-        uses: actions/setup-dotnet@v4
-        with:
-          dotnet-version: |
-            8.0.x
-            10.0.x
-      - if: matrix.sdk == 'java'
-        uses: actions/setup-java@v4
-        with:
-          distribution: temurin
-          java-version: "17"
-      - if: matrix.sdk == 'php'
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: "7.4"
-          extensions: curl, json
-          tools: composer
-      - if: matrix.sdk == 'go'
-        uses: actions/setup-go@v5
-        with:
-          go-version: "1.21"
       - name: Instalar dependencias
         run: |
           case "${{ matrix.sdk }}" in
             node)   cd node && npm ci && npm run build ;;
             python) cd python && python -m pip install -e ".[test]" ;;
-            php)    cd php && composer install --no-interaction ;;
             *) ;;
           esac
       - name: Suite de conformidad

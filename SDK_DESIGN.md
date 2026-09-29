@@ -10,18 +10,16 @@ Fuente de verdad de la API: `openapi/kuida-v1.json` (OpenAPI 3.1, generado desde
 |---|---|---|---|
 | `node/` | npm `@kuida/sdk` | Node 18 (fetch nativo); ESM + CJS; tipos incluidos | ninguna |
 | `python/` | PyPI `kuida` | Python 3.9 | `httpx` |
-| `dotnet/` | NuGet `Kuida` | `netstandard2.0` (incluye .NET Framework 4.6.2+) y `net8.0` | `System.Text.Json` (solo netstandard2.0) |
-| `java/` | Maven `ar.kuida:kuida-java` | Java 8 | `com.google.code.gson:gson` |
-| `php/` | Packagist `kuida/kuida-php` | PHP 7.4 con `ext-curl` y `ext-json` | ninguna |
-| `go/` | `github.com/Kuida-ar/kuida-sdks/go` | Go 1.21 | ninguna (stdlib) |
 
-Runtimes viejos a propósito: el parque de sistemas de salud en Argentina corre .NET Framework, Java 8 y PHP 7 en servidores que nadie actualiza. Un SDK que exige lo último no se instala.
+Runtimes viejos a propósito: los sistemas de las instituciones corren en servidores que nadie actualiza.
+
+Otros lenguajes (.NET, Java, PHP, Go) se suman cuando un cliente los pida, con este mismo contrato y la misma suite de conformidad.
 
 Versión inicial de todos: `0.1.0`. Semver: agregar un método o un campo es minor; romper una firma es major.
 
 ## 2. Cliente
 
-- Se construye con la clave: `new Kuida("kd_live_…")`, `Kuida(api_key="kd_live_…")`, `new KuidaClient("kd_live_…")`, `kuida.NewClient("kd_live_…")`. Si no se pasa, se lee `KUIDA_API_KEY` del entorno. Sin clave: error al construir, no al primer pedido.
+- Se construye con la clave: `new Kuida("kd_live_…")`, `Kuida(api_key="kd_live_…")`. Si no se pasa, se lee `KUIDA_API_KEY` del entorno. Sin clave: error al construir, no al primer pedido.
 - Opciones: `baseUrl` (default `https://www.kuida.ar/api`; también se lee `KUIDA_API_BASE`), `timeout` (default 30 s), `maxRetries` (default 2), `apiVersion` (default la del SDK, hoy `2026-09-28`).
 - Recursos como propiedades del cliente, en plural y con el nombre del OpenAPI (`x-kuida-resource`) en la convención del lenguaje: `client.patients`, `client.intakeRequests` / `client.intake_requests` / `client.IntakeRequests`.
 - Cada método acepta al final opciones por pedido: `idempotencyKey`, `timeout`, `maxRetries`.
@@ -50,10 +48,10 @@ webhookDeliveries.list(params?) · retrieve(id)
 
 ## 4. Modelos
 
-- **Nombres de campo del cable, en camelCase, sin traducir.** El JSON de la API ya está en camelCase y así se usa en todos los lenguajes. En los lenguajes tipados se respeta la convención de propiedades (`FullName` en C# con `[JsonPropertyName("fullName")]`, `FullName` en Go con tag `json:"fullName"`, getters `getFullName()` en Java); en Python los atributos son `snake_case` (`patient.full_name`) y el objeto también acepta `patient["fullName"]`. Los parámetros de entrada en Python aceptan kwargs en `snake_case` y se convierten a camelCase **solo en las claves conocidas del esquema**.
+- **Nombres de campo del cable, en camelCase, sin traducir.** El JSON de la API ya está en camelCase y así se usa en TypeScript. En Python los atributos son `snake_case` (`patient.full_name`) y el objeto también acepta `patient["fullName"]`; los parámetros de entrada aceptan kwargs en `snake_case` y se convierten a camelCase **solo en las claves conocidas del esquema**.
 - **Los mapas libres no se tocan:** `data` (de `Event`, `IntakeRequest`, `WebhookEvent`), `payload` (`WebhookDelivery`) y los `data` de los eventos que manda el integrador viajan tal cual, sin conversión de claves.
 - Modelos generados del OpenAPI por un script propio del SDK que vive en su carpeta (`scripts/generate`), commiteado junto con su salida. El script lee `../openapi/kuida-v1.json`. Los métodos de recurso se escriben a mano: son pocos y es donde está la ergonomía.
-- Fechas: se exponen como el tipo nativo cuando el lenguaje lo tiene sin fricción (`DateTimeOffset` en C#, `time.Time` en Go, `datetime` en Python, `OffsetDateTime`/`String` en Java a criterio, `string` ISO en TS y PHP). Al mandar, cualquier fecha se serializa ISO 8601 con zona.
+- Fechas: `string` ISO en TypeScript (los parámetros aceptan también `Date`) y `datetime` en Python. Al mandar, cualquier fecha se serializa ISO 8601 con zona.
 - Campos desconocidos en la respuesta se ignoran sin error (la API agrega campos sin cambiar de versión). Todo objeto conserva el JSON crudo accesible (`lastResponse` / `raw`).
 - `PatientReference` y `DoctorReference` son uniones: un id (`"pat_…"`) o un objeto de identidad. Cada lenguaje lo modela como puede (sobrecarga, tipo unión, `object`), pero las dos formas tienen que funcionar.
 - `EventInput`: unión discriminada por `type`. Alcanza con un tipo genérico `{ id, type, data, occurredAt?, source?, schemaVersion? }` con `data` como mapa; los tipos por evento son un plus.
@@ -79,13 +77,13 @@ Nunca se reintenta otro 4xx. Espera: `min(0.5 s × 2^intento, 8 s)` con jitter d
 
 ## 7. Errores
 
-Toda respuesta no 2xx con cuerpo `{ "error": { … } }` se convierte en una excepción (o `error` en Go) según `error.type`:
+Toda respuesta no 2xx con cuerpo `{ "error": { … } }` se convierte en una excepción según `error.type`:
 
 | `type` | Clase |
 |---|---|
 | `invalid_request_error` | `InvalidRequestError` |
 | `authentication_error` | `AuthenticationError` |
-| `permission_error` | `PermissionError` (`PermissionDeniedError` donde choque con el lenguaje) |
+| `permission_error` | `PermissionError` (`PermissionDeniedError` en Python, para no tapar la nativa) |
 | `idempotency_error` | `IdempotencyError` |
 | `rate_limit_error` | `RateLimitError` |
 | `api_error` o cualquier otro | `APIError` |

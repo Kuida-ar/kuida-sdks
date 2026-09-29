@@ -6,12 +6,8 @@ Librerías para conectar el sistema de tu institución (HIS, turnero, ERP, labor
 |---|---|---|
 | Node.js / TypeScript | `npm install @kuida/sdk` | [`node/`](node) |
 | Python | `pip install kuida` | [`python/`](python) |
-| .NET (C#) | `dotnet add package Kuida` | [`dotnet/`](dotnet) |
-| Java | `ar.kuida:kuida-java` (Maven / Gradle) | [`java/`](java) |
-| PHP | `composer require kuida/kuida-php` | [`php/`](php) |
-| Go | `go get github.com/Kuida-ar/kuida-sdks/go` | [`go/`](go) |
 
-Todas cumplen el mismo contrato ([`SDK_DESIGN.md`](SDK_DESIGN.md)): idempotencia automática en cada POST, reintentos con backoff ante errores de red, 429 y 5xx, errores tipados, paginación automática y verificación de firma de webhooks.
+Las dos cumplen el mismo contrato ([`SDK_DESIGN.md`](SDK_DESIGN.md)): idempotencia automática en cada POST, reintentos con backoff ante errores de red, 429 y 5xx, errores tipados, paginación automática y verificación de firma de webhooks.
 
 ## En 30 segundos (Node)
 
@@ -28,7 +24,7 @@ const turno = await kuida.appointments.create({
 // Kuida le manda al paciente los recordatorios por WhatsApp que tu institución configuró.
 ```
 
-Ejemplos equivalentes en cada lenguaje en el README de su carpeta y en la [referencia de la API](https://www.kuida.ar/desarrolladores/api).
+Ejemplos equivalentes en Python en el README de su carpeta y en la [referencia de la API](https://www.kuida.ar/desarrolladores/api).
 
 ## Claves
 
@@ -46,10 +42,14 @@ export KUIDA_API_KEY=kd_test_000000000000_mocksecretmocksecret00
 - `SDK_DESIGN.md` — lo que todo SDK de este repo cumple.
 - `conformance/` — mock de la API, vectores de firma y `run.sh`, que corre la misma suite de 17 escenarios contra cada SDK.
 
+## Otros lenguajes
+
+La API es HTTP + JSON y `openapi/kuida-v1.json` alcanza para generar un cliente en cualquier lenguaje. Si su sistema necesita un SDK oficial en otro lenguaje, escríbanos a desarrolladores@kuida.ar.
+
 ## Desarrollo
 
 ```bash
-conformance/run.sh all        # o node | python | dotnet | java | php | go
+conformance/run.sh all        # o node | python
 ```
 
 Un cambio en la API entra primero al spec (`openapi/kuida-v1.json`), después a los modelos de cada SDK (`scripts/generate` de cada carpeta), a sus métodos, al mock y a la suite.

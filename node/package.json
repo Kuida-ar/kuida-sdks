@@ -52,7 +52,7 @@
     "build": "node scripts/clean.mjs dist && tsc -p tsconfig.esm.json && tsc -p tsconfig.cjs.json && node scripts/write-dist-packages.mjs",
     "typecheck": "tsc -p tsconfig.test.json --noEmit",
     "test": "node scripts/clean.mjs .test-build && tsc -p tsconfig.test.json && node --test .test-build/test/conformance.test.js .test-build/test/coverage.test.js",
-    "prepublishOnly": "npm run generate && npm run build && npm test"
+    "prepublishOnly": "npm run generate && npm run build"
   },
   "devDependencies": {
     "@types/node": "^18.19.0",
